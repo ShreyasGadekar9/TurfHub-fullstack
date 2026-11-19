@@ -17,7 +17,7 @@
 - [Core Features](#-core-features)
 - [Tech Stack](#-tech-stack)
 - [Database Schema & ER Model](#-database-schema--er-model)
-- [REST API Specifications](#-rest-api-specifications)
+- [REST API Summary](#-rest-api-summary)
 - [Project Directory Structure](#-project-directory-structure)
 - [Getting Started](#-getting-started)
   - [Prerequisites](#prerequisites)
@@ -158,34 +158,14 @@ erDiagram
 
 ---
 
-## 📡 REST API Specifications
+## 📡 REST API Summary
 
-### 1. Authentication Endpoints (`/api/users`)
-| Method | Endpoint | Request Body | Description |
+| Module | Method | Endpoint | Purpose |
 | :--- | :--- | :--- | :--- |
-| `POST` | `/api/users/register` | `{ "name", "email", "password", "phone" }` | Registers a new user. Returns 400 if email exists. |
-| `POST` | `/api/users/login` | `{ "email", "password" }` | Authenticates user and returns profile (id, name, email, phone). |
-
-### 2. Turf Endpoints (`/api/turfs`)
-| Method | Endpoint | Request Body | Description |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/api/turfs` | — | Retrieves all registered turfs. |
-| `GET` | `/api/turfs/{id}` | — | Retrieves details for a specific turf by ID. |
-| `POST` | `/api/turfs` | `{ "name", "location", "sportType", "pricePerHour" }` | Adds a new turf facility. |
-
-### 3. Slot Endpoints (`/api/slots`)
-| Method | Endpoint | Request Body | Description |
-| :--- | :--- | :--- | :--- |
-| `GET` | `/api/slots/turf/{turfId}` | — | Retrieves all slots for a turf. |
-| `GET` | `/api/slots/turf/{turfId}/available` | — | Retrieves only unbooked slots for a turf. |
-| `POST` | `/api/slots` | `{ "turf": {"id": 1}, "date", "startTime", "endTime", "booked": false }` | Creates a new time slot. |
-
-### 4. Booking Endpoints (`/api/bookings`)
-| Method | Endpoint | Request Body | Description |
-| :--- | :--- | :--- | :--- |
-| `POST` | `/api/bookings` | `{ "slot": {"id": 1}, "userName": "Shreyas" }` | Reserves a slot. Fails if slot is already booked. |
-| `GET` | `/api/bookings/user/{userName}` | — | Retrieves all bookings for a user. |
-| `DELETE` | `/api/bookings/{id}` | — | Cancels booking and frees up the associated slot. |
+| **Auth** | `POST` | `/api/users/register`, `/api/users/login` | User registration & authentication |
+| **Turfs** | `GET`, `POST` | `/api/turfs`, `/api/turfs/{id}` | City turf listings & facility management |
+| **Slots** | `GET`, `POST` | `/api/slots/turf/{id}/available` | Real-time open slot querying & creation |
+| **Bookings** | `POST`, `DELETE` | `/api/bookings`, `/api/bookings/{id}` | Slot reservation & booking cancellations |
 
 ---
 
