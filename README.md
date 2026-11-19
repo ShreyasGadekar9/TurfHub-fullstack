@@ -46,9 +46,9 @@ flowchart LR
 | `POST` | `/api/users/register` | Register new user |
 | `POST` | `/api/users/login` | Authenticate user |
 | `GET` | `/api/turfs` | Fetch all turfs |
-| `GET` | `/api/slots/turf/{id}/available` | Fetch available slots for a turf |
+| `GET` | `/api/turfs/{turfId}/slots/available` | Fetch available slots for a turf |
 | `POST` | `/api/bookings` | Book a time slot |
-| `DELETE` | `/api/bookings/{id}` | Cancel booking and release slot |
+| `PUT` | `/api/bookings/{id}/cancel` | Cancel booking and release slot |
 
 ---
 
